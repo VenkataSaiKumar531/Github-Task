@@ -25,7 +25,7 @@ function List(props) {
       const { name, contributors_url, id, description, html_url } = item;
       return (
         <div
-          style={{ border: "1px solid red", padding: 25, margin: 10,background: favItems[id]?'aquamarine':null }}
+          style={{ border: "1px solid blue", padding: 25, margin: 10,background: favItems[id]?'aquamarine':'aliceblue' }}
           key={id}
         >
           <div style={{ display: "flex", padding: 5 }}>

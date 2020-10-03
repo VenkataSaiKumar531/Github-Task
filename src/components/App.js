@@ -92,7 +92,7 @@ function App(props) {
           padding: 10,
           display: "flex",
           textAlign: "center",
-          width: 400,
+          width: 600,
           margin: "auto",
         }}
       >
@@ -101,7 +101,7 @@ function App(props) {
           style={{
             padding: 20,
             cursor: "pointer",
-            width: 200,
+            width: 300,
             border: "1px solid black",
             // Heightlight the tab to show Public Repositories vs Favorite Repositories
             background: context == PUBLIC_ITEMS?'coral':null 
@@ -114,7 +114,7 @@ function App(props) {
           style={{
             padding: 20,
             cursor: "pointer",
-            width: 200,
+            width: 300,
             border: "1px solid black",
             marginLeft: 10,
             // Heightlight the tab to show Public Repositories vs Favorite Repositories
@@ -122,7 +122,7 @@ function App(props) {
           }}
           onClick={onClickContext.bind(this, { type: FAV_ITEMS })}
         >
-          Favorite Repositories
+         {favItems.length} Favorite Repositories 
         </div>
       </div>
       <hr />
