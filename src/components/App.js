@@ -42,6 +42,8 @@ function App(props) {
   };
 
   const onClickPagination = ({ type }) => {
+    if(context==FAV_ITEMS) return; //Pagination is only for Public repos
+
     let startPageNow = 0;
     switch (type) {
       case "prev":

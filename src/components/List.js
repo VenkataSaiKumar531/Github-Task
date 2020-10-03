@@ -1,8 +1,15 @@
-import React from "react";
+import React,{ useEffect, useState }  from "react";
 import { connect } from "react-redux";
 import { addFavItem, removeFavItem } from "../actions";
 
 function List(props) {
+
+  const [favItems, setFavItems] = useState({});
+  useEffect(() => {
+    setFavItems(props.favItems);
+  }, [props.favItems]);
+
+
   const clickFavActoin = ({ type, item }) => {
     switch (type) {
       case "add_fav":
@@ -18,7 +25,7 @@ function List(props) {
       const { name, contributors_url, id, description, html_url } = item;
       return (
         <div
-          style={{ border: "1px solid red", padding: 25, margin: 10 }}
+          style={{ border: "1px solid red", padding: 25, margin: 10,background: favItems[id]?'aquamarine':null }}
           key={id}
         >
           <div style={{ display: "flex", padding: 5 }}>
@@ -41,21 +48,12 @@ function List(props) {
                 padding: 10,
                 border: "1px solid black",
                 cursor: "pointer",
+                // Heightlight the tab to show Public Repositories vs Favorite Repositories
+                background: favItems[id]?'crimson':null
               }}
-              onClick={clickFavActoin.bind(this, { type: "add_fav", item })}
+              onClick={clickFavActoin.bind(this, { type: favItems[id]?"remove_fav":"add_fav", item })}
             >
-              Add Favorite
-            </div>
-            <div
-              style={{
-                padding: 10,
-                border: "1px solid black",
-                marginLeft: 5,
-                cursor: "pointer",
-              }}
-              onClick={clickFavActoin.bind(this, { type: "remove_fav", item })}
-            >
-              Remove Favorite
+             {favItems[id]?'Remove Favorite':'Add Favorite'}
             </div>
           </div>
         </div>
@@ -64,5 +62,7 @@ function List(props) {
   };
   return <div className="List">{renderItems()}</div>;
 }
-
-export default connect(null, { addFavItem, removeFavItem })(List);
+const mapStateToProps = (state) => {
+  return { favItems: state.favorite };
+};
+export default connect(mapStateToProps, { addFavItem, removeFavItem })(List);
