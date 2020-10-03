@@ -94,12 +94,15 @@ function App(props) {
           margin: "auto",
         }}
       >
+
         <div
           style={{
             padding: 20,
             cursor: "pointer",
             width: 200,
             border: "1px solid black",
+            // Heightlight the tab to show Public Repositories vs Favorite Repositories
+            background: context == PUBLIC_ITEMS?'coral':null 
           }}
           onClick={onClickContext.bind(this, { type: PUBLIC_ITEMS })}
         >
@@ -112,6 +115,8 @@ function App(props) {
             width: 200,
             border: "1px solid black",
             marginLeft: 10,
+            // Heightlight the tab to show Public Repositories vs Favorite Repositories
+            background: context == FAV_ITEMS?'coral':null
           }}
           onClick={onClickContext.bind(this, { type: FAV_ITEMS })}
         >
