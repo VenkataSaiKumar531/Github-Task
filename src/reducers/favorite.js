@@ -1,5 +1,4 @@
 const favorite = (state = {}, { type, item }) => {
-  console.log("state", type, item);
   switch (type) {
     case "ADD_FAV_ITEM":
       return { ...state, [item.id]: item };

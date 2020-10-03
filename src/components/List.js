@@ -62,8 +62,6 @@ function List(props) {
       );
     });
   };
-
-  console.log(props);
   return <div className="List">{renderItems()}</div>;
 }
 
