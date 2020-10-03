@@ -22,7 +22,6 @@ function App(props) {
   }, []);
 
   useEffect(() => {
-    console.log("fav...", props.favItems, "context", context);
     setFavItems(props.favItems);
     if (context == FAV_ITEMS) setCurrentItems(props.favItems);
   }, [props.favItems]);
@@ -35,7 +34,6 @@ function App(props) {
   };
 
   const updateCurrentItems = ({ items, startPage, pageSize }) => {
-    console.log("updateCurrentItems", items, startPage, pageSize);
     let tempItems = [];
     for (let ind = 0; ind + startPage < items.length && ind < pageSize; ind++) {
       tempItems.push(items[ind + startPage]);
@@ -44,7 +42,6 @@ function App(props) {
   };
 
   const onClickPagination = ({ type }) => {
-    console.log(type);
     let startPageNow = 0;
     switch (type) {
       case "prev":
@@ -71,7 +68,6 @@ function App(props) {
   };
 
   const onClickContext = ({ type }) => {
-    console.log("props", props.favItems, "hh", favItems);
     setContext(type);
     switch (type) {
       case FAV_ITEMS:
@@ -159,9 +155,6 @@ function App(props) {
 }
 
 const mapStateToProps = (state) => {
-  //console.log("got favorite items", state.favorite);
   return { favItems: Object.values(state.favorite) };
 };
 export default connect(mapStateToProps)(App);
-
-//export default App;
